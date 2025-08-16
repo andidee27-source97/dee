@@ -155,10 +155,6 @@
             color: #777;
         }
 
-        .password-container {
-            position: relative;
-        }
-
         .toggle-password {
             position: absolute;
             right: 20px;
@@ -216,6 +212,73 @@
         .section-header p {
             color: #a0a0c0;
             font-size: 18px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin: 0 auto 30px;
+            max-width: 600px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 16px 25px 16px 55px;
+            background: rgba(30, 30, 50, 0.8);
+            border: 2px solid rgba(80, 78, 128, 0.3);
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-bar:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 20px rgba(106, 17, 203, 0.4);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6a11cb;
+            font-size: 18px;
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(25, 25, 45, 0.95);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(80, 78, 128, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .suggestion-item:hover {
+            background: rgba(106, 17, 203, 0.2);
+        }
+
+        .suggestion-item i {
+            color: #6a11cb;
+            font-size: 16px;
         }
 
         .accounts-grid {
@@ -518,9 +581,16 @@
                 <p>Informasi akun penting Anda yang tersimpan dengan aman</p>
             </div>
             
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-bar" placeholder="Cari akun, email, ID, atau password...">
+                <i class="fas fa-search search-icon"></i>
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+            
             <div class="accounts-grid">
                 <!-- Account 1 -->
-                <div class="account-card" style="animation-delay: 0.1s;">
+                <div class="account-card" style="animation-delay: 0.1s;" data-search="akun utama andi.dee27@gmail.com andi.dee27@icloud.com star002002">
                     <h3><i class="fas fa-user-shield"></i> Akun Utama</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -557,7 +627,7 @@
                 </div>
                 
                 <!-- Account 2 -->
-                <div class="account-card" style="animation-delay: 0.2s;">
+                <div class="account-card" style="animation-delay: 0.2s;" data-search="microsoft andi.dee27@gmail.com dee002002">
                     <h3><i class="fab fa-microsoft"></i> Microsoft</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -585,7 +655,7 @@
                 </div>
                 
                 <!-- Account 3 -->
-                <div class="account-card" style="animation-delay: 0.3s;">
+                <div class="account-card" style="animation-delay: 0.3s;" data-search="ea sports andi.dee27@gmail @andidee27 star002002">
                     <h3><i class="fas fa-gamepad"></i> EA Sports</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -622,7 +692,7 @@
                 </div>
                 
                 <!-- Account 4 -->
-                <div class="account-card" style="animation-delay: 0.4s;">
+                <div class="account-card" style="animation-delay: 0.4s;" data-search="ubisoft andi.dee27@gmail.com andidee27 @star002002">
                     <h3><i class="fas fa-dragon"></i> Ubisoft</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -659,7 +729,7 @@
                 </div>
                 
                 <!-- Account 5 -->
-                <div class="account-card" style="animation-delay: 0.5s;">
+                <div class="account-card" style="animation-delay: 0.5s;" data-search="garena andi.dee27@gmail.com andidee27 @star002002">
                     <h3><i class="fas fa-headset"></i> Garena</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -696,7 +766,7 @@
                 </div>
                 
                 <!-- Account 6 -->
-                <div class="account-card" style="animation-delay: 0.6s;">
+                <div class="account-card" style="animation-delay: 0.6s;" data-search="apex mancing andi.dee27@gmail.com dee271 @star002002">
                     <h3><i class="fas fa-fish"></i> Apex Mancing</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -733,7 +803,7 @@
                 </div>
                 
                 <!-- Account 7 -->
-                <div class="account-card" style="animation-delay: 0.7s;">
+                <div class="account-card" style="animation-delay: 0.7s;" data-search="nexus mod andidee27 @star002002002">
                     <h3><i class="fas fa-code"></i> Nexus Mod</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -761,7 +831,7 @@
                 </div>
                 
                 <!-- Account 8 -->
-                <div class="account-card" style="animation-delay: 0.8s;">
+                <div class="account-card" style="animation-delay: 0.8s;" data-search="plitch andidee27 @star002002002">
                     <h3><i class="fas fa-tools"></i> Plitch</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -789,7 +859,7 @@
                 </div>
                 
                 <!-- Account 9 -->
-                <div class="account-card" style="animation-delay: 0.9s;">
+                <div class="account-card" style="animation-delay: 0.9s;" data-search="epic games andi.dee27@gmail.com @star002002">
                     <h3><i class="fab fa-epic-games"></i> Epic Games</h3>
                     <div class="account-info">
                         <div class="info-row">
@@ -824,6 +894,18 @@
     </div>
 
     <script>
+        // Cek status login saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            if (isLoggedIn === 'true') {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('dataSection').style.display = 'block';
+            }
+            
+            // Inisialisasi fitur pencarian
+            initSearch();
+        });
+
         // Login functionality
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -833,6 +915,9 @@
             
             // Validasi login
             if (email === 'andi.dee27@gmail.com' && password === 'Star002002') {
+                // Simpan status login di sessionStorage
+                sessionStorage.setItem('isLoggedIn', 'true');
+                
                 // Hide login section, show data section
                 document.getElementById('loginSection').style.display = 'none';
                 document.getElementById('dataSection').style.display = 'block';
@@ -843,6 +928,9 @@
         
         // Logout functionality
         document.getElementById('logoutBtn').addEventListener('click', function() {
+            // Hapus status login
+            sessionStorage.removeItem('isLoggedIn');
+            
             document.getElementById('dataSection').style.display = 'none';
             document.getElementById('loginSection').style.display = 'block';
             document.getElementById('loginForm').reset();
@@ -897,6 +985,113 @@
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 3000);
+        }
+        
+        // Fungsi untuk inisialisasi fitur pencarian
+        function initSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchSuggestions = document.getElementById('searchSuggestions');
+            const accountCards = document.querySelectorAll('.account-card');
+            
+            // Array untuk menyimpan semua kata kunci pencarian
+            const allKeywords = [];
+            
+            // Ekstrak semua kata kunci dari kartu akun
+            accountCards.forEach(card => {
+                const keywords = card.dataset.search.split(' ');
+                allKeywords.push(...keywords);
+            });
+            
+            // Buat array unik dari semua kata kunci
+            const uniqueKeywords = [...new Set(allKeywords)];
+            
+            // Fungsi untuk melakukan pencarian
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                // Jika pencarian kosong, tampilkan semua kartu
+                if (searchTerm === '') {
+                    accountCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    searchSuggestions.style.display = 'none';
+                    return;
+                }
+                
+                // Filter kartu yang sesuai dengan kata kunci
+                accountCards.forEach(card => {
+                    const searchData = card.dataset.search.toLowerCase();
+                    if (searchData.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Fungsi untuk menampilkan saran pencarian
+            function showSuggestions() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                // Kosongkan saran sebelumnya
+                searchSuggestions.innerHTML = '';
+                
+                // Jika pencarian kosong, sembunyikan saran
+                if (searchTerm === '') {
+                    searchSuggestions.style.display = 'none';
+                    return;
+                }
+                
+                // Filter kata kunci yang sesuai dengan input
+                const filteredKeywords = uniqueKeywords.filter(keyword => 
+                    keyword.toLowerCase().includes(searchTerm)
+                );
+                
+                // Jika tidak ada saran, sembunyikan box saran
+                if (filteredKeywords.length === 0) {
+                    searchSuggestions.style.display = 'none';
+                    return;
+                }
+                
+                // Tampilkan maksimal 5 saran
+                const suggestionsToShow = filteredKeywords.slice(0, 5);
+                
+                // Tambahkan saran ke box
+                suggestionsToShow.forEach(keyword => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    suggestionItem.innerHTML = `<i class="fas fa-search"></i> ${keyword}`;
+                    suggestionItem.addEventListener('click', () => {
+                        searchInput.value = keyword;
+                        performSearch();
+                        searchSuggestions.style.display = 'none';
+                    });
+                    searchSuggestions.appendChild(suggestionItem);
+                });
+                
+                // Tampilkan box saran
+                searchSuggestions.style.display = 'block';
+            }
+            
+            // Event listener untuk input pencarian
+            searchInput.addEventListener('input', () => {
+                performSearch();
+                showSuggestions();
+            });
+            
+            // Sembunyikan saran saat mengklik di luar
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) {
+                    searchSuggestions.style.display = 'none';
+                }
+            });
+            
+            // Sembunyikan saran saat menekan tombol escape
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    searchSuggestions.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
