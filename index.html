@@ -2,8 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Data Pribadi Akun - Premium</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -12,6 +13,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -531,30 +533,111 @@
             }
         }
 
-        @media (max-width: 480px) {
+        /* iPhone 15 (390px width) specific adjustments */
+        @media (max-width: 420px) {
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .logo {
+                gap: 10px;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
             .logo-text {
                 font-size: 20px;
             }
             
+            .user-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .login-section {
+                padding: 40px 15px;
+            }
+            
             .login-section h1 {
-                font-size: 28px;
+                font-size: 26px;
+            }
+            
+            .login-section p {
+                font-size: 14px;
+            }
+            
+            .input-group input {
+                padding: 14px 14px 14px 50px;
+                font-size: 15px;
+            }
+            
+            .input-group i {
+                left: 15px;
+                font-size: 16px;
+            }
+            
+            .toggle-password {
+                right: 15px;
+                font-size: 16px;
+            }
+            
+            .login-btn {
+                padding: 16px;
+                font-size: 16px;
+            }
+            
+            .section-header h1 {
+                font-size: 26px;
+            }
+            
+            .section-header p {
+                font-size: 16px;
+            }
+            
+            .search-bar {
+                padding: 14px 20px 14px 50px;
+                font-size: 15px;
+            }
+            
+            .search-icon {
+                left: 15px;
+                font-size: 16px;
             }
             
             .account-card {
                 padding: 20px;
             }
             
-            .info-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
+            .account-card h3 {
+                font-size: 18px;
             }
             
-            .info-value {
-                max-width: 100%;
-                text-align: left;
-                width: 100%;
-                justify-content: space-between;
+            .info-label, .info-value {
+                font-size: 14px;
+            }
+            
+            .logout-btn {
+                padding: 14px 30px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .user-info div {
+                font-size: 14px;
+            }
+            
+            .login-section h1 {
+                font-size: 24px;
             }
         }
     </style>
@@ -593,11 +676,11 @@
             <form class="login-form" id="loginForm">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" placeholder="Masukkan email Anda" required value="andi.dee27@gmail.com">
+                    <input type="email" id="email" placeholder="Masukkan email Anda" required>
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="Masukkan password Anda" required value="Star002002">
+                    <input type="password" id="password" placeholder="Masukkan password Anda" required>
                     <button type="button" class="toggle-password" id="togglePassword">
                         <i class="fas fa-eye"></i>
                     </button>
